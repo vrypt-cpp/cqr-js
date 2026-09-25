@@ -12,18 +12,18 @@ algorithms, the same test vectors, and the same sync, zero-dependency design.
   (finder detection, affine sampling, Otsu fallback, rotation/mirror/inversion)
 - Reed–Solomon error correction on decode, Kanji → Shift-JIS or UTF-8 output
 - Sync API, no Promises, no WASM loader, no dependencies
-- `cqr/compact` entry without the UTF-8 Kanji tables for smaller bundles
+- `@vrypt-cpp/cqr/compact` entry without the UTF-8 Kanji tables for smaller bundles
 
 ## Install
 
 ```sh
-npm install cqr
+npm install @vrypt-cpp/cqr
 ```
 
 ## Quick start
 
 ```ts
-import { encode, decodeText, renderAscii } from 'cqr';
+import { encode, decodeText, renderAscii } from '@vrypt-cpp/cqr';
 
 const code = encode('HELLO WORLD');
 console.log(`v${code.version} ${code.size}x${code.size} mask=${code.mask}`);
@@ -41,7 +41,7 @@ For raw image pixels see `decodeGray8` / `decodePacked` below.
 ### Encode
 
 ```ts
-import { encode, Ecc, Mode, InputEncoding } from 'cqr';
+import { encode, Ecc, Mode, InputEncoding } from '@vrypt-cpp/cqr';
 
 const code = encode('Hello, 世界', {
   ecc: Ecc.M,              // L | M | Q | H (default M)
@@ -70,7 +70,7 @@ Note: unlike the C API (fixed stride 177), `modules` is tightly packed
 ### Render
 
 ```ts
-import { packRows, renderAscii, renderSvg } from 'cqr';
+import { packRows, renderAscii, renderSvg } from '@vrypt-cpp/cqr';
 
 packRows(code); // Uint8Array, MSB-first rows
 renderAscii(code, { scale: 1, border: 2, invert: false }); // string
@@ -80,7 +80,7 @@ renderSvg(code, { scale: 4, border: 4 }); // string
 ### Decode
 
 ```ts
-import { decodeMatrix, decodeMatrixUtf8, decodeGray8, decodePacked } from 'cqr';
+import { decodeMatrix, decodeMatrixUtf8, decodeGray8, decodePacked } from '@vrypt-cpp/cqr';
 
 // Normalized module matrix (e.g. QrCode.modules from encode):
 const { bytes, info } = decodeMatrix(code.modules, code.size);
@@ -103,7 +103,7 @@ Errors throw `QRError` with a `code` from `Status`
 ### Compact build
 
 ```ts
-import { encode } from 'cqr/compact';
+import { encode } from '@vrypt-cpp/cqr/compact';
 ```
 
 Same API, no UTF-8 Kanji tables: raw Shift-JIS Kanji still works, other
@@ -151,7 +151,7 @@ and compact-build parity.
 | entry     | minified | gzip  | brotli |
 | --------- | -------- | ----- | ------ |
 | `cqr`     | 62.3 KB  | 33.8 KB | 30.4 KB |
-| `cqr/compact` | 35.0 KB | 13.5 KB | 11.6 KB |
+| `@vrypt-cpp/cqr/compact` | 35.0 KB | 13.5 KB | 11.6 KB |
 
 The full Kanji table (~20 KB packed) dominates the full build. The compact
 build meets the <15 KB (gzip) budget. Run `npm run size` for dist file sizes.

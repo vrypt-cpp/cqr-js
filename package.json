@@ -1,7 +1,7 @@
 {
-  "name": "cqr",
+  "name": "@vrypt-cpp/cqr",
   "version": "1.0.0",
-  "description": "cQR — fast, lightweight, dependency-free QR Code generator/decoder (ISO/IEC 18004, versions 1–40). Sync API for Node and browsers.",
+  "description": "cQR \u2014 fast, lightweight, dependency-free QR Code generator/decoder (ISO/IEC 18004, versions 1\u201340). Sync API for Node and browsers.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

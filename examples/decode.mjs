@@ -1,4 +1,4 @@
-import { encode, decodeMatrixUtf8, decodeText } from 'cqr';
+import { encode, decodeMatrixUtf8, decodeText } from '@vrypt-cpp/cqr';
 
 const code = encode('Hello, decoder!');
 const { bytes, info } = decodeMatrixUtf8(code.modules, code.size);

@@ -1,4 +1,4 @@
-import { encode, renderAscii, renderSvg } from 'cqr';
+import { encode, renderAscii, renderSvg } from '@vrypt-cpp/cqr';
 
 const code = encode('HELLO WORLD');
 console.log(`version=${code.version} size=${code.size} mask=${code.mask} ecc=${code.ecc}`);
